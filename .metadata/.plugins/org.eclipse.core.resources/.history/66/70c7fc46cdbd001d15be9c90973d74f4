@@ -1,0 +1,10 @@
+#Browser and WebDriver
+BrowserForExecution=GoolgeChrome
+
+#WebDriver Names
+Chrome=webdriver.chrome.driver
+MsEdge=webdriver.edge.driver
+
+#WebDriver paths
+ChromeDriverPath=.\\src\\test\\resources\\com.resource.driverFiles\\chromedriver.exe
+MsEdgeDriverPath=.\\src\\test\\resources\\com.resource.driverFiles\\msedgedriver.exe

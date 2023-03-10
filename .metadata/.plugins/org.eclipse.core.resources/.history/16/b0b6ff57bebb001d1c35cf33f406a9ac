@@ -1,0 +1,16 @@
+package com.test.pom;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+
+public class GoogleSearchEngine {
+
+	WebDriver driver;
+
+	public GoogleSearchEngine(WebDriver driver, String URL) {
+
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+
+}

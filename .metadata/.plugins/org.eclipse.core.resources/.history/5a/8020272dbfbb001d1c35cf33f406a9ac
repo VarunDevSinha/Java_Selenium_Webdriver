@@ -1,0 +1,6 @@
+package com.test.runner;
+
+@RunWith()
+public class RunTest {
+
+}

@@ -1,0 +1,49 @@
+#Author - varundevsinha@gmail.com
+@Webtool2
+Feature: Bank associates are able to access webtool from different geo-locations.
+  
+  Rule: A valid user log-in to the webtool, and can do client assessment.
+
+  Background: 
+    Given Webtool2 system is up and running. Scenario Test data is prepared.
+    And User log-in with valid "UserId" and "Password".
+    And User selects the "Location" and Server.
+
+  @Create @Associate @Regression
+  Scenario Outline: Bank associate log-in to webtool and do client assessment.
+    Given Test data loaded as per <TestCase_Id>.
+    And User goes to create new assessment page.
+    When User creates the new client assessment with the required details.
+    Then User submits the assessment and Successfully log-out from the webtool.
+
+    Examples: 
+      | TestCase_Id     |
+      | XRAYTC - 987123 |
+      | XRAYTC - 987126 |
+      | XRAYTC - 987129 |
+
+  @Search @Associate @Smoke @Regression
+  Scenario Outline: Bank associate log-in to webtool and search client assessment.
+    Given Test data loaded as per <TestCase_Id>.
+    And User goes to search page.
+    When User search the client assessment with "AssessmentId", and verify the "Risk".
+    Then User successfully log-out from the webtool.
+
+    Examples: 
+      | TestCase_Id     |
+      | XRAYTC - 987124 |
+      | XRAYTC - 987127 |
+      | XRAYTC - 987130 |
+
+  @Update @Associate @Smoke
+  Scenario Outline: Bank associate log-in to webtool and update client assessment.
+    Given Test data loaded as per <TestCase_Id>.
+    And User goes to search page.
+    When User search the client assessment with "AssessmentId", and update the "Risk".
+    Then User successfully log-out from the webtool.
+
+    Examples: 
+      | TestCase_Id     |
+      | XRAYTC - 987125 |
+      | XRAYTC - 987128 |
+      | XRAYTC - 987131 |

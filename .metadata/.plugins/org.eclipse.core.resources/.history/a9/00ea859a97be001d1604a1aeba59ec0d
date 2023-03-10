@@ -1,0 +1,4 @@
+#Author - varundevsinha@gmail.com
+Feature: Bank associates are able to access webtool from different geo-locations.
+
+Rule: A valid user log in to the webtool, and can do client assessment.

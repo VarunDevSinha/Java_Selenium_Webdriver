@@ -1,0 +1,11 @@
+package com.test.utils;
+
+import java.io.IOException;
+
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+
+import org.junit.jupiter.api.Test;
+
+public class JavaUtilities {
+
+}

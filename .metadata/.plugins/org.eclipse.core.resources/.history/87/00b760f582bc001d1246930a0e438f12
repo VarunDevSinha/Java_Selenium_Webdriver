@@ -1,0 +1,15 @@
+#Browser and WebDriver
+BrowserForExecution=
+
+#WebDriver Names
+Chrome=
+Firefox=
+InternetExplorer=
+MsEdge=
+Safari=
+#WebDriver paths
+ChromeDriverPath=
+FirefoxDriverPath=
+InternetExplorerDriverPath=
+MsEdgeDriverPath=
+SafariDriverPath=

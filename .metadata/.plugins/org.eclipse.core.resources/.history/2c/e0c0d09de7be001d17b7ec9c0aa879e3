@@ -1,0 +1,79 @@
+package com.test.stepDefinitions;
+
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import com.test.base.JavaSeleniumBase;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
+public class UiFunctionalScenarioTest extends JavaSeleniumBase {
+
+	@Given("Webtool system is up and running. Scenario Test data is prepared.")
+	public void webtool_system_is_up_and_running_scenario_test_data_is_prepared() {
+
+		/*
+		 * Verify the page link is same as provided by development team. Take Screenshot
+		 * of the page, and save for visual verification. Verify the login form input
+		 * fields isDisplayed. Verify TestData file field is not null in
+		 * SeleniumConfiguration.properties file.
+		 */
+	}
+
+	@ParameterizedTest
+	@ValueSource()
+	@Given("Associate log-in with valid {string} and {string}.")
+	public void associate_log_in_with_valid_and(String UserId, String Password) {
+
+		/*
+		 * Verify UseId field isSelected and then input the value. Verify Password field
+		 * isSelected and then input the value. Click on login button.
+		 */
+	}
+
+	@Given("Associate selects the {string} and Server.")
+	public void associate_selects_the_and(String Location) {
+		
+		/*
+		 * Wait till Location drop-down isEnabled. 
+		 */
+	}
+
+	@Given("Associate goes to create new assessment page.")
+	public void associate_goes_to_create_new_assessment_page() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@When("Creates the new client assessment with the required details.")
+	public void creates_the_new_client_assessment_with_the_required_details() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@Then("Submits the assessment and Successfully log-out from the webtool.")
+	public void submits_the_assessment_and_successfully_log_out_from_the_webtool() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@Given("Associate goes to search page.")
+	public void associate_goes_to_search_page() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@When("Search the client assessment with {string}, and verify the {string}.")
+	public void search_the_client_assessment_with_and_verify_the_risk(String AssessentId, String Risk) {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@Then("Successfully log-out from the webtool.")
+	public void successfully_log_out_from_the_webtool() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+}

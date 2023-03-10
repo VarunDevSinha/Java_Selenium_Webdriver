@@ -1,0 +1,17 @@
+package com.test.utils;
+
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+
+public class ReportUtilities {
+
+	public static String reportPath = ".//trgt//TestReports";
+	public static ExtentReports reports;
+
+	public static void reportingFunctions(String testName) {
+
+		reports = new ExtentReports(reportPath + "extentReport_" + "testName" + System.currentTimeMillis() + ".html",
+				false);
+		ExtentTest test = reports.startTest(testName);
+	}
+}

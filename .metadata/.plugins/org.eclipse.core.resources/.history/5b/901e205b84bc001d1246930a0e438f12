@@ -1,0 +1,13 @@
+#Browser and WebDriver
+BrowserForExecution=
+
+#WebDriver Names
+Chrome=webdriver.chrome.driver
+Firefox=webdriver.gecko.driver
+MsEdge=webdriver.edge.driver
+Safari=
+#WebDriver paths
+ChromeDriverPath=.//lib//src//test//resources//com.resource.driverFiles//
+FirefoxDriverPath=.//lib//src//test//resources//com.resource.driverFiles//
+MsEdgeDriverPath=.//lib//src//test//resources//com.resource.driverFiles//
+SafariDriverPath=.//lib//src//test//resources//com.resource.driverFiles//

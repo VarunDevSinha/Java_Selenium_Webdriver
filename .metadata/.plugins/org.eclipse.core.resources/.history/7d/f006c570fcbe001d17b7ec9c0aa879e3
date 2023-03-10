@@ -1,0 +1,12 @@
+package com.test.utils;
+
+public class ReportUtilities {
+
+	public static void extentTestClassFunctions() {
+
+	}
+
+	public static void extentReportsClassFunctions() {
+
+	}
+}

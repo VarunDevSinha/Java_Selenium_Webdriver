@@ -1,0 +1,83 @@
+package com.test.stepDefinitions;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import com.test.base.JavaSeleniumBase;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
+public class Webtool2Test extends JavaSeleniumBase {
+
+	public static Map<String, Object> CreateMap = new HashMap<String, Object>();
+	public static Map<String, Object> SearchMap = new HashMap<String, Object>();
+	public static Map<String, Object> UpdateMap = new HashMap<String, Object>();
+
+	@Given("Webtool2 system is up and running. Scenario Test data is prepared.")
+	public void webtool2_system_is_up_and_running_scenario_test_data_is_prepared() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@Given("User log-in with valid {string} and {string}.")
+	public void user_log_in_with_valid_and(String UserId, String Password) {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@Given("User selects the {string} and Server.")
+	public void user_selects_the_and_server(String Location) {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@Given("Test data loaded as per {string}.")
+	public void test_data_loaded_as_per(String TestCase_Id) {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@Given("User goes to create new assessment page.")
+	public void user_goes_to_create_new_assessment_page() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@When("User creates the new client assessment with the required details.")
+	public void user_creates_the_new_client_assessment_with_the_required_details() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@Then("User submits the assessment and Successfully log-out from the webtool.")
+	public void user_submits_the_assessment_and_successfully_log_out_from_the_webtool() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@Given("User goes to search page.")
+	public void user_goes_to_search_page() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@When("User search the client assessment with {string}, and verify the {string}.")
+	public void user_search_the_client_assessment_with_and_verify_the(String AssessmentId, String Risk) {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@Then("User successfully log-out from the webtool.")
+	public void user_successfully_log_out_from_the_webtool() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@When("User search the client assessment with {string}, and update the {string}.")
+	public void user_search_the_client_assessment_with_and_update_the(String AssessmentId, String Risk) {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+}

@@ -1,0 +1,25 @@
+1678065778223	Move package
+1678065935423	Rename package 'pom'
+1678065996135	Rename package 'files'
+1678066171303	Delete element
+1678067298180	Delete element
+1678067962207	Delete element
+1678067966063	Delete element
+1678067983350	Delete element
+1678067986527	Delete element
+1678150616702	Move 'SeleniumConfiguration.properties' to 'com.resource.configuration'
+1678150627469	Move 'UiFunctionalEnd2End.feature' to 'com.resource.feature'
+1678150636136	Move 'WebtoolTestData.xlsx' to 'com.resource.testData'
+1678150641938	Delete element
+1678150645221	Delete element
+1678150648428	Delete element
+1678155976300	Delete element
+1678255545675	Delete element
+1678255548824	Delete element
+1678255551668	Delete element
+1678255555256	Delete element
+1678255558701	Delete element
+1678255562483	Delete element
+1678330889715	Move 'screenshots' to 'trgt'
+1678376870856	Rename resource 'UiFunctionalEnd2End.feature'
+1678425665060	Delete element

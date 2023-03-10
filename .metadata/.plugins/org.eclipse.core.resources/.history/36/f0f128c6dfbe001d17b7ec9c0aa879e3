@@ -1,0 +1,29 @@
+#Author - varundevsinha@gmail.com
+Feature: Bank associates are able to access webtool from different geo-locations.
+  
+  Rule: A valid user log-in to the webtool, and can do client assessment.
+
+  Background: 
+    Given Webtool system is up and running.
+		
+		Rule: Webtool for Canadian banking.
+    @Canada @BankServer
+    Scenario: Bank associate log-in to webtool in bank branch, inside Canada.
+    Given Associate log-in with valid "UserId" and "Password".
+    When Associate selects the "location" and "server".
+    Then Creates the client assessment with the required details, and verify the "Risk".
+    And 
+    
+    @Canada @OpenServer
+    Scenario: Bank associate log-in to webtool in client location, inside Canada.
+    Given Associate log-in with valid "UserId" and "Password".
+    When 
+    Then 
+    And 
+    
+    @Canada @RestrictServer
+    Scenario: Bank associate log-in to webtool in bank home branch, inside Canada.
+    Given Associate log-in with valid "UserId" and "Password".
+    When 
+    Then 
+    And 

@@ -1,0 +1,233 @@
+package com.test.utils;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.Duration;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.logging.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.ScriptKey;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import com.test.base.JavaSeleniumBase;
+
+public class SeleniumUtilities extends JavaSeleniumBase {
+	
+	public WebDriver driver;
+	
+	// Take Screenshot of driver window and element.
+	public static void takesScreenshot(String screenshotOf, String IdLocatorValue, CharSequence text)
+			throws IOException {
+
+		switch (screenshotOf) {
+		case "fullScreenshot":
+			Actions keyAction = new Actions(browserDriver);
+			keyAction.keyDown(Keys.CONTROL).keyDown(Keys.LEFT_SHIFT).sendKeys("i").build().perform();
+			keyAction.keyDown(Keys.CONTROL).keyDown(Keys.LEFT_SHIFT).sendKeys("p").build().perform();
+			keyAction.sendKeys(text).build().perform();
+		case "viewScreenshot":
+			File driverSS = ((TakesScreenshot) browserDriver).getScreenshotAs(OutputType.FILE);
+			FileInputStream DssIS = new FileInputStream(driverSS);
+			Files.copy(DssIS, Path.of("//lib//src//screenshots//WindowImage_" + System.currentTimeMillis() + ".png"));
+			break;
+		case "elementScreenshot":
+			File elementSS = ((TakesScreenshot) browserDriver.findElement(By.id(IdLocatorValue)))
+					.getScreenshotAs(OutputType.FILE);
+			FileInputStream EssIS = new FileInputStream(elementSS);
+			Files.copy(EssIS, Path.of("//lib//src//screenshots//ElementImage_" + System.currentTimeMillis() + ".png"));
+			break;
+		default:
+			System.out.println("Give \"screenshotOf\" as - viewScreenshot / fullScreenshot / elementScreenshot.");
+		}
+
+	}
+
+	// File upload to file upload element.
+	public static void fileUpload(WebElement element, String targetFilePath, String targetfileName) {
+
+		// Upload a file
+		element.sendKeys(targetFilePath);
+
+		// Verify your file is uploaded.
+		browserDriver.getPageSource().contains(targetfileName);
+	}
+
+	// WaitTimeFunctions();
+	public static void implicitWait(String implitWaitType, long seconds) {
+
+		switch (implitWaitType) {
+		case "implicitlyWait":
+			browserDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(seconds));
+			break;
+		case "pageLoadTimeout":
+			browserDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(seconds));
+			break;
+		case "scriptTimeout":
+			browserDriver.manage().timeouts().scriptTimeout(Duration.ofSeconds(seconds));
+			break;
+		default:
+			Logger.getAnonymousLogger().log(java.util.logging.Level.WARNING,
+					"Give \"implitWaitType\" as - implicitlyWait / pageLoadTimeout / scriptTimeout.");
+		}
+	}
+
+	public static void explicitWait(long seconds) {
+
+		/*
+		 * WebElement element = new WebDriverWait(browserDriver,
+		 * Duration.ofSeconds(seconds)).until(ExpectedConditions.)
+		 */
+	}
+
+	public static void fluentWait(WebElement element, long seconds) {
+
+		/*
+		 * Wait<WebDriver> fWait = new
+		 * FluentWait<WebDriver>(browserDriver).withTimeout(Duration.ofSeconds(seconds))
+		 * .pollingEvery(Duration.ofSeconds(seconds)).ignoring(Throwable.class);
+		 *
+		 * element = fWait.until(ExpectedConditions.);
+		 */
+	}
+
+	// MouseActionFunctions();
+	public static void mouseClicks(String clickType, WebElement element) {
+
+		Actions clickAction = new Actions(browserDriver);
+
+		switch (clickType) {
+		case "leftClick":
+			clickAction.click();
+			break;
+		case "leftClickElement":
+			clickAction.click(element);
+			break;
+		case "rightClick":
+			clickAction.contextClick();
+			break;
+		case "rightClickElement":
+			clickAction.contextClick(element);
+			break;
+		case "doubleClick":
+			clickAction.contextClick();
+			break;
+		case "doubleClickElement":
+			clickAction.contextClick(element);
+			break;
+		case "clickAndHold":
+			clickAction.clickAndHold();
+			break;
+		case "clickAndHoldElement":
+			clickAction.clickAndHold(element);
+			break;
+		default:
+			System.out.println("Give \"clickType\" as - leftClick / leftClickElement / "
+					+ "rightClick / rightClickElement / doubleClick / doubleClickElement / clickAndHold / clickAndHoldElement.");
+		}
+
+	}
+
+	public static void mouseMove(String moveType, WebElement element, int x, int y) {
+
+		Actions moveAction = new Actions(browserDriver);
+
+		switch (moveType) {
+		case "moveByOffset":
+			moveAction.moveByOffset(x, y);
+			break;
+		case "moveToElement":
+			moveAction.moveToElement(element);
+			break;
+		default:
+			System.out.println("Give \"moveType\" as - moveByOffset / moveToElement");
+		}
+
+	}
+
+	public static void mouseDrag(String dragType, WebElement srcElement, WebElement trgtElement, int x, int y) {
+
+		Actions dragAction = new Actions(browserDriver);
+
+		switch (dragType) {
+		case "dragAndDropElement":
+			dragAction.dragAndDrop(srcElement, trgtElement);
+			break;
+		case "dragAndDropOffset":
+			dragAction.dragAndDropBy(srcElement, x, y);
+			break;
+		default:
+			System.out.println("Give \"dragType\" as - dragAndDropElement / dragAndDropOffset");
+		}
+	}
+
+	// KeyboardActionFunctions();
+	public static void keyActions(String keyActionType, WebElement element, CharSequence keys) {
+
+		Actions keyAction = new Actions(browserDriver);
+
+		switch (keyActionType) {
+		case "KeyDownUp":
+			keyAction.keyDown(keys);
+			keyAction.keyUp(keys);
+			break;
+		case "KeyDownUpElement":
+			keyAction.keyDown(element, keys);
+			keyAction.keyUp(element, keys);
+			break;
+		default:
+			System.out.println("Give \"keyActionType\" as - KeyDownUp / KeyDownUpElement");
+		}
+
+	}
+
+	// JavascriptExecution function
+	public static Set<ScriptKey> pinScriptSession(String executionType, Set<String> scripts) {
+
+		Set<ScriptKey> jsScripts = new HashSet<ScriptKey>();
+		JavascriptExecutor jsExecuteDriver = (JavascriptExecutor) browserDriver;
+
+		scripts.forEach(script -> {
+			ScriptKey jsscriptKey = jsExecuteDriver.pin(script);
+			jsScripts.add(jsscriptKey);
+		});
+		return jsScripts;
+	}
+
+	public static void executePinScriptSession(Set<ScriptKey> scripts) {
+
+		JavascriptExecutor jsExecutorDriver = (JavascriptExecutor) browserDriver;
+		scripts.forEach(jsscript -> jsExecutorDriver.executeScript(jsscript));
+	}
+
+	public static void jsScriptFunction(String executeType, String script, Set<String> scriptSet) {
+
+		JavascriptExecutor jsExecutorDriver = (JavascriptExecutor) browserDriver;
+
+		switch (executeType) {
+		case "executeScript":
+			jsExecutorDriver.executeScript(script);
+			break;
+		case "executeAsyncScript":
+			jsExecutorDriver.executeAsyncScript(script);
+			break;
+		case "executeScriptSet":
+			scriptSet.forEach(jsscript -> jsExecutorDriver.executeScript(jsscript));
+			break;
+		case "executeAsyncScriptSet":
+			scriptSet.forEach(jsscript -> jsExecutorDriver.executeAsyncScript(jsscript));
+			break;
+		default:
+			System.out.println(
+					"Give \"executeType\" as - executeScript / executeScriptSet / executeAsyncScript / executeAsyncScriptSet.");
+		}
+	}
+}

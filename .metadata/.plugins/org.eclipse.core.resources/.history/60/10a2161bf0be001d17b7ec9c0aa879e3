@@ -1,0 +1,13 @@
+#Web-tool Test data file configuration.
+WT_TestDataFilePath=
+WT_ScenarioSheetName=
+WT_ScenarioColumns=
+WT_ScenarioOutlineSheetname=
+WT_ScenarioOutlineColumns=
+
+#ECM-tool Test data file configuration.
+WT_TestDataFilePath=
+WT_ScenarioSheetName=
+WT_ScenarioColumns=
+WT_ScenarioOutlineSheetname=
+WT_ScenarioOutlineColumns=

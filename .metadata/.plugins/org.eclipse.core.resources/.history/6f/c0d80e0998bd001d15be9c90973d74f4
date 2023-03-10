@@ -1,0 +1,62 @@
+package com.test.utils;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.junit.jupiter.api.Test;
+
+public class JavaUtilities {
+
+	public static File readFile = new File(".//src//test//resources//com.resource.testData//WebtoolTestData.xlsx");
+
+	public static Map<String, Object> scenario1Map = new HashMap<String, Object>();
+	public static ArrayList<String> scenario1Keys = new ArrayList<String>();
+
+	public static Map<String, Object> scenario2Map = new HashMap<String, Object>();
+	public static ArrayList<String> scenario2Keys = new ArrayList<String>();
+
+	public void readExcelData(File readFile) throws IOException, InvalidFormatException {
+
+		int numberOdCells;
+
+		FileInputStream readFileIS = new FileInputStream(readFile);
+		XSSFWorkbook workbook = new XSSFWorkbook(readFileIS);
+		for (int numberOfSheet = 0; numberOfSheet < workbook.getNumberOfSheets(); numberOfSheet++) {
+			XSSFSheet currentSheet = workbook.getSheetAt(numberOfSheet);
+			if (currentSheet.getSheetName() == "Scenario1") {
+				for (int numberOfRow = 0; numberOfRow < 1;) {
+					XSSFRow headerRow = currentSheet.getRow(numberOfRow);
+					for (int cellNum = 0; cellNum < headerRow.getPhysicalNumberOfCells(); cellNum++) {
+						String val = headerRow.getCell(cellNum).toString();
+						scenario1Keys.add(val);
+					}
+
+				}
+
+			} else {
+
+			}
+
+		}
+
+		workbook.close();
+
+	}
+
+	@Test
+	public void runTest() throws InvalidFormatException, IOException {
+
+		readExcelData(readFile);
+		System.out.println(scenario1Keys);
+	}
+
+}

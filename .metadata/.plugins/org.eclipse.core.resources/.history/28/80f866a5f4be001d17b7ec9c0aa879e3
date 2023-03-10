@@ -1,0 +1,13 @@
+#Web-tool1 Test data file configuration.
+WT1_TestDataFilePath=
+WT1_ScenarioSheetName=
+WT1_ScenarioColumns=
+WT1_ScenarioOutlineSheetname=
+WT1_ScenarioOutlineColumns=
+
+#Web-tool2 Test data file configuration.
+WT2_TestDataFilePath=
+WT2_ScenarioSheetName=
+WT2_ScenarioColumns=
+WT2_ScenarioOutlineSheetname=
+WT2_ScenarioOutlineColumns=

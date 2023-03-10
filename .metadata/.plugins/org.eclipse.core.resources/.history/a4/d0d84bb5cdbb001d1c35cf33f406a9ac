@@ -1,0 +1,29 @@
+#Author - varundevsinha@gmail.com
+Feature: Test plan for validation of assessment workflow for different valid users of source system - Webtool.
+
+  Background: Environment setup is up and running.
+    Given Environment is ready to launch Webtool on the browser.
+
+  @BankEnvironment
+  Scenario: Random Webtool user creates a new assessment and push to investigation queue.
+    Given User successfully landed on "Homepage" using valid credential.
+    And User redirect to client assessment window with GeoDetails.
+    When User completes the assessment for new Customer and verify the risk.
+    Then After submiting the assessment user verifies the "New Customer Id" added to investigation queue.
+    And User search the "Customer Id" and verifies the case status changed to "New status".
+
+  Scenario Outline: Specific Webtool user creates a new assessment and follow the case workflow.
+    Given Test data prepared and gathered for "<Test Id>".
+    And User successfully landed on "Homepage" using valid "UserId" and "Password".
+    And User redirect to client assessment window with "GeoDetails".
+    When User completes the assessment for new Customer and verify the "risk".
+    Then After submiting the assessment user verifies the "New Customer Id" added to user queue.
+    And User search the "New Customer Id" and verifies the case status changed to "New Customer status".
+    And User takes action after entering "AuthKey" and close the case.
+
+    Examples: 
+      | UserId     | Password    | GeoDetails                     | AuthKey      |
+      | Associate  | Pass1AS2023 | InBranch, Canada               | AK2023003AS  |
+      | AnalystCB1 | Pass2AN2023 | InCustomerLocation, Canada     | AK2023003AN1 |
+      | AnalystIB2 | Pass3AN2023 | InCustomerLocation, Costa Rica | AK2023003AN2 |
+      | Supervisor | Pass4SV2023 | InBranch, Almania              | AK2023003SV  |

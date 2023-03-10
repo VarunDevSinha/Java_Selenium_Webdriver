@@ -1,0 +1,113 @@
+package com.test.stepDefinitions;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.Set;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+
+import com.test.utils.ReportUtilities;
+
+public class Webtool1_JunitTest {
+
+	@BeforeAll
+	public void webtool1_system_is_up_and_running_scenario_test_data_is_prepared() {
+
+		ReportUtilities.reports(".//trgt//TestReports", "creates_the_new_client_assessment_with_the_required_details");
+
+		/*
+		 * Verify the page link is same as provided by development team. Take Screenshot
+		 * of the page, and save for visual verification. Verify the login form input
+		 * fields isDisplayed. Verify TestData file path field is not null in
+		 * TestDataConfiguration.properties file. As per function column of excel sheet
+		 * create HashMaps. Within block create TempCreateMap or TempSearchMap or
+		 * TempUpdateMap and finally replace the CreateMap or SearchMap or UpdateMap.
+		 * use the map data for functional testing.
+		 */
+	}
+
+	@Before
+	@Order(value = 1)
+	public void associate_log_in_with_valid_and(String UserId, String Password) {
+
+		/*
+		 * Search UserId field. Verify UseId field isSelected and then input the value.
+		 * Search Password field. Verify Password field isSelected and then input the
+		 * value. Click on login button.
+		 */
+	}
+
+	@Before
+	@Order(value = 2)
+	public void associate_selects_the_and(String Location) {
+
+		/*
+		 * Wait till the pop-up came, switchTo pop-up verify the test includes correct
+		 * UserId and accept.Verify location drop-down isEnabled. Select the country
+		 * from drop-down using SelectByvisibleText / SelectByIndex.
+		 */
+	}
+
+	@Before
+	@Order(value = 3)
+	public void associate_goes_to_create_new_assessment_page() {
+
+		/*
+		 * Verify the UserId is showing in profile section, and user is on HomePage by
+		 * verifying the pageTitle. Find create button and click on that.
+		 */
+	}
+
+	@Test
+	public void creates_the_new_client_assessment_with_the_required_details() {
+
+		/*
+		 * Verify the UserId and On-boarding country is selected correctly as Associate
+		 * details. Fill the assessment form with data from excel (Input fields,
+		 * Drop-down fields, Radio buttons, and Check boxes). Click on calculate button,
+		 * and verify the risk from excel data. If Risk assertTrue=True then take
+		 * screenshot and save with prefix "True" and System_CurrentTime. If Risk
+		 * assertTrue = false then take screenshot and save with prefix "false" and
+		 * System_CurrentTime.
+		 */
+
+		String expectedRisk = "Risk in excel file for specific tets case";
+		String actualRisk = "risk assessed from webtool";
+		Set<String> riskCategories = Set.of("High", "Low", "Moderate", "VeryHigh", "ModerateHigh");
+
+		if (actualRisk == expectedRisk) {
+			ReportUtilities.logTest("PASS");
+		} else if (actualRisk != expectedRisk) {
+			ReportUtilities.logTest("FAIL");
+		} else if (expectedRisk == null) {
+			ReportUtilities.logTest("WARNING");
+		} else if (riskCategories.actualRisk == null) {
+			ReportUtilities.logTest("ERROR");
+		} else {
+		}
+	}
+
+	@After
+	public void submits_the_assessment_and_successfully_log_out_from_the_webtool() {
+
+		/*
+		 * Click on submit button. Verify message of successful submit of assessment and
+		 * new assessmentId generated. Create a list of all new assessment Id and save
+		 * in excel. Go back to home-page then click on profile section scroll to
+		 * log-out and click. Verify successful message of log-out for UserId. Wait till
+		 * page redirect to log-in page window.
+		 */
+	}
+
+	@AfterAll
+	public static void endTest() {
+
+	}
+}

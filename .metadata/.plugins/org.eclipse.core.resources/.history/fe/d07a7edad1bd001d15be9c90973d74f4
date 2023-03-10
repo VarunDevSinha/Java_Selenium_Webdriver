@@ -1,0 +1,120 @@
+package com.test.base;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.time.Duration;
+import java.util.Properties;
+import java.util.Set;
+
+import org.apache.logging.log4j.Level;
+import org.openqa.selenium.PageLoadStrategy;
+import org.openqa.selenium.UnexpectedAlertBehaviour;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverLogLevel;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.chromium.ChromiumDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.LocalFileDetector;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+public class JavaSeleniumBase {
+
+	public static Properties setConfigurationProperties() throws IOException {
+
+		Properties configurationProperty = new Properties();
+		FileInputStream fileIS = new FileInputStream(
+				new File(".\\src\\test\\resources\\com.resource.configuration\\SeleniumConfiguration.properties"));
+		configurationProperty.load(fileIS);
+		return configurationProperty;
+	}
+
+	public static WebDriver setBrowserWebdriverLocal() throws IOException {
+
+		WebDriver browserWebdriverLocal = null;
+		Properties configurationProperty = setConfigurationProperties();
+		String BrowserForExecution = configurationProperty.getProperty("BrowserForExecution");
+
+		switch (BrowserForExecution) {
+		case "GoolgeChrome":
+			System.setProperty(configurationProperty.getProperty("Chrome"),
+					configurationProperty.getProperty("ChromeDriverPath"));
+			browserWebdriverLocal = new ChromeDriver();
+			break;
+		case "MicrosoftEdge":
+			System.setProperty(configurationProperty.getProperty("MsEdge"),
+					configurationProperty.getProperty("MsEdgeDriverPath"));
+			browserWebdriverLocal = new EdgeDriver();
+			break;
+		default:
+			System.out.println("Give value of BrowserForExecution as - GoolgeChrome / MicrosoftEdge.");
+		}
+
+		return browserWebdriverLocal;
+	}
+
+	public static WebDriver setBrowserWebdriverRemote() throws IOException {
+
+		WebDriver browserWebdriverRemote = null;
+		Properties configurationProperty = setConfigurationProperties();
+		String BrowserForExecution = configurationProperty.getProperty("BrowserForExecution");
+
+		switch (BrowserForExecution) {
+		case "GoolgeChrome":
+			ChromeOptions chromebrowserOptions = new ChromeOptions();
+			chromebrowserOptions.setPlatformName(configurationProperty.getProperty("PlatformName"));
+			chromebrowserOptions.setBrowserVersion(configurationProperty.getProperty("BrowserVersion"));
+			chromebrowserOptions.setImplicitWaitTimeout(
+					Duration.ofSeconds(Integer.parseInt(configurationProperty.getProperty("ImplicitWaitTimeout"))));
+			chromebrowserOptions
+					.setPageLoadTimeout(Duration.ofSeconds(Integer.parseInt(configurationProperty.getProperty(""))));
+			chromebrowserOptions.setScriptTimeout(
+					Duration.ofSeconds(Integer.parseInt(configurationProperty.getProperty("ScriptTimeout"))));
+			chromebrowserOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+			chromebrowserOptions.addArguments("--headless");
+			chromebrowserOptions.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT_AND_NOTIFY);
+
+			browserWebdriverRemote = new RemoteWebDriver(
+					new URL(configurationProperty.getProperty("SeleniumRemoteURL")), chromebrowserOptions);
+			break;
+
+		case "MicrosoftEdge":
+			ChromeOptions edgebrowserOptions = new ChromeOptions();
+			edgebrowserOptions.setPlatformName(configurationProperty.getProperty("PlatformName"));
+			edgebrowserOptions.setBrowserVersion(configurationProperty.getProperty("BrowserVersion"));
+			edgebrowserOptions.setImplicitWaitTimeout(
+					Duration.ofSeconds(Integer.parseInt(configurationProperty.getProperty("ImplicitWaitTimeout"))));
+			edgebrowserOptions
+					.setPageLoadTimeout(Duration.ofSeconds(Integer.parseInt(configurationProperty.getProperty(""))));
+			edgebrowserOptions.setScriptTimeout(
+					Duration.ofSeconds(Integer.parseInt(configurationProperty.getProperty("ScriptTimeout"))));
+			edgebrowserOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+			edgebrowserOptions.addArguments("--headless");
+			edgebrowserOptions.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT_AND_NOTIFY);
+
+			browserWebdriverRemote = new RemoteWebDriver(
+					new URL(configurationProperty.getProperty("SeleniumRemoteURL")), edgebrowserOptions);
+			break;
+		default:
+			System.out.println("Give value of BrowserForExecution as - GoolgeChrome / MicrosoftEdge.");
+		}
+
+		return browserWebdriverRemote;
+	}
+
+	public static void closeBrowser(WebDriver browserWebdriver) {
+
+		Set<String> windowHandle = browserWebdriver.getWindowHandles();
+		while (windowHandle.size() > 1) {
+			windowHandle.forEach(tabWindow -> browserWebdriver.switchTo().window(tabWindow).close());
+		}
+	}
+
+	public static void quitBrowser(WebDriver browserWebdriver) {
+
+		browserWebdriver.quit();
+	}
+}

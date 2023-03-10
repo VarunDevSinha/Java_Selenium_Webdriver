@@ -1,0 +1,7 @@
+package com.test.stepDefinitions;
+
+import com.test.base.JavaSeleniumBase;
+
+public class UiFunctionalScenarioOutlineTest extends JavaSeleniumBase {
+
+}

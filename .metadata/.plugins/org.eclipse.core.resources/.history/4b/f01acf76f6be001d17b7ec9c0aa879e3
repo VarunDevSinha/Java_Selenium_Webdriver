@@ -1,0 +1,15 @@
+package com.test.stepDefinitions;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import com.test.base.JavaSeleniumBase;
+
+public class Webtool2Test extends JavaSeleniumBase {
+
+	public static Map<String, Object> CreateMap = new HashMap<String, Object>();
+	public static Map<String, Object> SearchMap = new HashMap<String, Object>();
+	public static Map<String, Object> UpdateMap = new HashMap<String, Object>();
+	
+	
+}
